@@ -37,23 +37,42 @@ public class PlataformaController {
         return "redirect:/plataformas/list"; // Redireciona para a lista após adicionar
     }
 
-    @RequestMapping("/update/{id}")
-    public String update(@PathVariable("id") long id, Model model) {
-        Plataforma plataforma = plataformaRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID de plataforma inválido:" + id));
-        model.addAttribute("plataforma", plataforma);
+    @RequestMapping("/update")
+    public String update(
+        @RequestParam("id") long id,
+        Model ui ) {
+       
+       Optional<Plataforma> plataforma = plataformaRepo.findById(id);
+       if(plataforma.isPresente()){
+        ui.addAttribute("plataforma", plataforma.get());
+        return "plataforma/update";
+       }
+               
+
         return "plataformas/update"; // Nome da view para o formulário de edição
     }
 
-    @PostMapping("/update/{id}")
-    public String update(@PathVariable("id") long id, @ModelAttribute Plataforma plataforma) {
-        plataforma.setId(id); // Garante que estamos atualizando a plataforma correta
-        plataformaRepo.save(plataforma);
-        return "redirect:/plataformas/list"; // Redireciona para a lista após atualizar
-    }
+    @RequestMapping(value = "/update", merthod = RequestMethod.POST)
+    public String update(
+        @RequestParam("id") long id,
+        @RequestParam("nome") String nome
+    ) {
 
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id) {
+        Optional<Plataforma> plataforma = plataformaRepo.findById(id);
+
+        if(plataforma.isPresente()){
+            plataforma.get().setNome(nome);
+
+        plataformaRepo.save(plataforma.get());
+         // Redireciona para a lista após atualizar
+    }
+    return "redirect:/plataformas/list";
+    }
+    @RequestMapping("/delete")
+    public String delete(
+        @RequestParam("id") long id,
+        Model ui
+    ) {
         Plataforma plataforma = plataformaRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("ID de plataforma inválido:" + id));
         plataformaRepo.delete(plataforma);
