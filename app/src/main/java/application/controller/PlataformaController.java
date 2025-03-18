@@ -28,7 +28,7 @@ public class PlataformaController {
 
     @RequestMapping("/insert")
     public String insert(Model ui) {
-        return "plataformas/insert"; // Nome da view para o formulário de adição
+        return "plataforma/insert"; // Nome da view para o formulário de adição
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
@@ -68,7 +68,7 @@ public class PlataformaController {
         plataformaRepo.save(plataforma.get());
          // Redireciona para a lista após atualizar
     }
-    return "redirect:/plataformas/list";
+    return "redirect:/plataforma/list";
     }
     @RequestMapping("/delete")
     public String delete(
@@ -78,6 +78,6 @@ public class PlataformaController {
         Plataforma plataforma = plataformaRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("ID de plataforma inválido:" + id));
         plataformaRepo.delete(plataforma);
-        return "redirect:/plataformas/list"; // Redireciona para a lista após excluir
+        return "redirect:/plataforma/list"; // Redireciona para a lista após excluir
     }
 }
