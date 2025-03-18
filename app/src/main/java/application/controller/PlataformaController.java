@@ -33,6 +33,8 @@ public class PlataformaController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public String insert(@RequestParam("nome")String nome) {
+
+        Plataforma plataforma = new Plataforma();
         plataformaRepo.save(plataforma);
         return "redirect:/plataformas/list"; // Redireciona para a lista após adicionar
     }
@@ -43,16 +45,16 @@ public class PlataformaController {
         Model ui ) {
        
        Optional<Plataforma> plataforma = plataformaRepo.findById(id);
-       if(plataforma.isPresente()){
+       if(plataforma.isPresent()){
         ui.addAttribute("plataforma", plataforma.get());
         return "plataforma/update";
        }
                
 
-        return "plataformas/update"; // Nome da view para o formulário de edição
+        return "redirect:/plataforma/list"; // Nome da view para o formulário de edição
     }
 
-    @RequestMapping(value = "/update", merthod = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(
         @RequestParam("id") long id,
         @RequestParam("nome") String nome
@@ -60,7 +62,7 @@ public class PlataformaController {
 
         Optional<Plataforma> plataforma = plataformaRepo.findById(id);
 
-        if(plataforma.isPresente()){
+        if(plataforma.isPresent()){
             plataforma.get().setNome(nome);
 
         plataformaRepo.save(plataforma.get());
