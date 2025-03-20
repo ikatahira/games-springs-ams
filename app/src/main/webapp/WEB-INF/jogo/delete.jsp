@@ -8,12 +8,14 @@
 
 </head>
 <body>
+    <div class="container">
     <h1>Deletar Jogo</h1>
     <p>Tem certeza que deseja deletar o jogo com ID ${jogo.titulo}?</p>
     <form action="/jogo/delete" method="post">
-        <input type="hidden" name="id" value="${param.id}">
-        <button type="submit">Sim, Deletar</button>
-        <a href="/jogos/list">Cancelar</a>
+        <input type="hidden" name="id" value="${jogo.id}">
+        <button type="submit" class="btn btn-danger">Sim, Deletar</button>
+        <a href="/jogos/list" class="btn btn-primary">Cancelar</a>
     </form>
+</div>
 </body>
 </html>
