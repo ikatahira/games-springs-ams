@@ -16,40 +16,29 @@
       </div>
       <div class="form-group">  
         <label for="categoria">Categoria:</label>
-        <select name="categoria" class="${categorias}">
-            <c:forEach var="categoria" items="${categorias}">
-                <option value="${categoria.id}" ${categoria.id == jogo.categoria.id ? 'selected' : ''}>
-                    ${categoria.nome}
-                </option>
+        <select name="categoria" class="form-select">
+            <c:forEach var="c" items="${categorias}">
+                <option ${jogo.categoria.id ==c.id ? "selected" : "" value="${c.id}"}>${c.nome}</option>
+                   
             </c:forEach>
         </select>
     </div>
 <div class="form-group">
         <label for="plataforma">Plataformas:</label><br>
-        <c:forEach var="plataforma" items="${plataformas}">
+        <c:forEach var="p" items="${plataformas}">
             <div class="custom-control custom-checkbox">
-            <input type="checkbox" id="plataforma${plataforma.id}" name="plataformas" value="${plataforma.id}"
-                   <c:forEach var="jogoPlataforma" items="${jogo.plataformas}">
-                       <c:if test="${jogoPlataforma.id == plataforma.id}">checked</c:if>
-                
-                   </c:forEach>>
+            <input type="checkbox" ${jogo.plataformas.contains(p) ? "checked": ""}
+                class="custom-control-input" name="plataformas" value="${p.id}" id="${p.id}"/>
+                   
+            <label class="custom-control-label" for="${p.id}">${p.nome}</label>    
+                </div>
+                   </c:forEach>
                 </select>
             </div>
-
-<div class="form-group">
-                
-            <label for="plataforma">Plataformas</label>
-            <c:forEach var="p" items="${plataformas}">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" ${jogo.plataformas.contains(p) ? "checked" : ""}
-                       class="custom-control-label" for="${p.id}">${p.nome}</label>
-                       <div>
-            </c:forEach>
-        </div>
-        <br/>
+       <br/>
         
-        <button type="submit">Atualizar</button>
-        <a href="/jogos/list">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="/jogos/list" class="btn btn-primary"> Cancelar</a>
     </form>
 </body>
 </html>
