@@ -25,11 +25,11 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="jogo" items="${jogos}">
+                <c:forEach var="item" items="${jogos}">
                     <tr>
-                        <td>${jogo.id}</td>
-                        <td>${jogo.titulo}</td>
-                        <td>${jogo.categoria.nome}</td> <!-- Exibe o nome da categoria -->
+                        <td>${item.id}</td>
+                        <td>${item.titulo}</td>
+                        <td>${item.categoria.nome}</td> <!-- Exibe o nome da categoria -->
                         <td>
                             <c:forEach var="p" varStatus="s" items="${item.plataformas}">
                                 ${s.getCount() >1 ? ", " : ""}
