@@ -12,6 +12,8 @@
         <div class="container">
             <h1>Categorias</h1>
             <a href="/categoria/insert" class="btn btn-primary" >Nova Categoria</a>
+            <a class="nav-link" href="/">Menu Principal</a>
+
             
             <table class="table">
                 

@@ -21,7 +21,7 @@
                     <a class="nav-link" href="/plataforma/list">Plataforma</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/jogo/list">Jogo</a>
+                    <a class="nav-link" href="/jogo/list">Jogos</a>
                 </li>
             </ul>
         </nav>

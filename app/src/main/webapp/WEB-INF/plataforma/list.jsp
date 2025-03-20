@@ -12,6 +12,8 @@
     <div class="container">
         <h1>Plataformas</h1>
         <a href="/plataforma/insert" class="btn btn-primary">Nova Plataforma</a>
+        <a class="nav-link" href="/">Menu Principal</a>
+
         
         <table class="table">
             <thead>

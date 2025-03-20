@@ -12,7 +12,8 @@
     <div class="container">
         <h1>Jogos</h1>
         <a href="/jogo/insert" class="btn btn-primary">Novo Jogo</a>
-        
+        <a class="nav-link" href="/">Menu Principal</a>
+
         <table class="table">
             <thead>
                 <tr>

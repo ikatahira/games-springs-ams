@@ -12,6 +12,7 @@
     <body>
         <main class="container">
             <h1>Remover Categoria</h1>
+            
             <hr />
             <p>Tem certeza que deseja remover a categoria <em>"${categoria.nome}"</em> ?</p>
             <form action="/categoria/delete" method="post">
